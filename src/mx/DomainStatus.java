@@ -1,11 +1,11 @@
 package mx;
 
-public class Domain {
+public class DomainStatus {
 
     protected String url;
     protected Integer status;
 
-    public Domain(String url){
+    public DomainStatus(String url){
         this.url = url;
     }
 

@@ -3,5 +3,5 @@ package mx;
 import java.util.ArrayList;
 
 public interface SourceInterface {
-    ArrayList<Domain> getDomainList() throws SourceNotFoundException;
+    ArrayList<DomainStatus> getDomainList() throws SourceNotFoundException;
 }

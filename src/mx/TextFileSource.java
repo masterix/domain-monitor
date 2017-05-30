@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 public class TextFileSource implements SourceInterface {
 
-    protected ArrayList<Domain> domains;
+    protected ArrayList<DomainStatus> domainStatuses;
 
     protected String filename;
 
     public TextFileSource(String inputFilename) {
-        domains = new ArrayList<>();
+        domainStatuses = new ArrayList<>();
         filename = inputFilename;
     }
 
@@ -20,8 +20,8 @@ public class TextFileSource implements SourceInterface {
     /**
      * @throws SourceNotFoundException
      */
-    public ArrayList<Domain> getDomainList() throws SourceNotFoundException {
-        domains.clear();
+    public ArrayList<DomainStatus> getDomainList() throws SourceNotFoundException {
+        domainStatuses.clear();
         try{
             readDomainsFromFile();
         }
@@ -29,7 +29,7 @@ public class TextFileSource implements SourceInterface {
             throw new SourceNotFoundException(ex.getMessage());
         }
 
-        return domains;
+        return domainStatuses;
     }
 
     private void readDomainsFromFile() throws IOException {
@@ -37,7 +37,7 @@ public class TextFileSource implements SourceInterface {
         BufferedReader br = new BufferedReader(fr);
         String url;
         while ((url = br.readLine()) != null) {
-            domains.add(new Domain(url));
+            domainStatuses.add(new DomainStatus(url));
         }
         br.close();
 

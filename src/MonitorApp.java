@@ -22,23 +22,23 @@ public class MonitorApp {
         System.out.printf("Delay: %dms\r\n", delayInMs);
 
         // prepare source
-        ArrayList<Domain> domainList = new ArrayList<>();
+        ArrayList<DomainStatus> domainStatusList = new ArrayList<>();
         try{
             TextFileSource textFileSource = new TextFileSource(filename);
-            domainList = textFileSource.getDomainList();
+            domainStatusList = textFileSource.getDomainList();
         } catch (SourceNotFoundException ex){
             System.out.println(ex.getLocalizedMessage());
             System.exit(1);
         }
 
         try {
-            Monitor domainMonitor = new Monitor(domainList, delayInMs);
-            domainList = domainMonitor.getDomainListWithStatuses();
+            Monitor domainMonitor = new Monitor(domainStatusList, delayInMs);
+            domainStatusList = domainMonitor.getDomainListWithStatuses();
         } catch(HostException e) {
             e.printStackTrace();
         }
 
-        for(Domain d: domainList){
+        for(DomainStatus d: domainStatusList){
             System.out.println("Response code for domain " + d.getUrl() + " is: " + d.getStatus());
         }
     }

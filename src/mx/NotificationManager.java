@@ -7,17 +7,17 @@ import java.util.ArrayList;
  */
 public class NotificationManager {
 
-    private ArrayList<NotificationSenderInterface> senders;
+    private ArrayList<NotificationSender> senders;
 
     public NotificationManager(){
         senders = new ArrayList<>();
     }
 
-    public void addSender(NotificationSenderInterface sender){
+    public void addSender(NotificationSender sender){
         senders.add(sender);
     }
 
-    public void removeSender(NotificationSenderInterface sender){
+    public void removeSender(NotificationSender sender){
         senders.remove(sender);
     }
 
