@@ -3,10 +3,11 @@ import mx.*;
 import java.util.ArrayList;
 
 public class MonitorApp {
+
+    static String filename = "test.txt";
+    static long delayInMs = 200;
     public static void main(String[] args) {
         System.setProperty("http.keepAlive", "false");
-        long delayInMs = 200;
-        String filename = "test.txt";
         if (args.length > 0) {
             try {
                 delayInMs = Integer.parseInt(args[0]);
